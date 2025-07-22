@@ -1,19 +1,19 @@
 # Library Management System
 
-## 📚 Overview
+## Overview
 
 This is a basic console-based application designed to manage books and members in a library. It allows you to perform core operations like adding, removing, borrowing, and returning books, and listing available or borrowed books.
 
-## 📁 Project Structure
+## Project Structure
 
 The project is organized into clear directories to separate different parts of the application:
 
-* `models/`: Contains the data structures (what a **Book** and a **Memeber** look like).
+* `models/`: Contains the data structures.
 * `services/`: Holds the main business logic (how books are added, removed, borrowed, etc.). This is where the core library operations happen.
 * `controllers/`: Acts as the bridge between the user interface (the console menu) and the `services`. It handles user input and calls the right service functions.
 * `main.go`: The starting point of your application. It sets up the library, the controller, and runs the main menu loop.
 
-## 🚀 How to Run
+## How to Run
 
 To get the library system up and running:
 
