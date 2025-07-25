@@ -4,6 +4,7 @@ import (
 	"context"
 	"fmt"
 	"log"
+	"os"
 	"time"
 
 	"go.mongodb.org/mongo-driver/mongo"
@@ -15,8 +16,19 @@ var Client *mongo.Client
 var taskCollection *mongo.Collection
 
 func ConnectDB() {
+	dbUser := os.Getenv("DB_USER")
+	dbPass := os.Getenv("DB_PASSWORD")
+	dbCluster := os.Getenv("DB_CLUSTER")
+
+	connectionURI := fmt.Sprintf(
+		"mongodb+srv://%s:%s@%s/?retryWrites=true&w=majority&appName=Go-Backend-Cluster",
+		dbUser,
+		dbPass,
+		dbCluster,
+	)
+
 	serverAPI := options.ServerAPI(options.ServerAPIVersion1)
-	opts := options.Client().ApplyURI("mongodb+srv://kirubellegese:RnLhJWoMdVE9Trd4@go-backend-cluster.0dunmke.mongodb.net/?retryWrites=true&w=majority&appName=Go-Backend-Cluster").SetServerAPIOptions(serverAPI)
+	opts := options.Client().ApplyURI(connectionURI).SetServerAPIOptions(serverAPI)
 
 	// Create a new client and connect to the server
 	client, err := mongo.Connect(context.TODO(), opts)
