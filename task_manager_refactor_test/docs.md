@@ -47,13 +47,34 @@ The following is a list of all available API endpoints and their functionalities
 | GET | /tasks/ | Retrieves all tasks. |
 | GET | /tasks/:id | Retrieves a single task by its ID. |
 
-## Future Development
+## Unit Test Suite
 
-To add new features to the application, follow these guidelines:
+The project includes a comprehensive unit test suite to ensure the correctness and reliability of the codebase.
 
-1.  **Define the domain:** Start by defining the new entities and business logic in the `domain` layer.
-2.  **Implement the repository:** Create a new repository in the `repository` layer to handle data access for the new entities.
-3.  **Create the use cases:** Implement the new use cases in the `usecases` layer to orchestrate the flow of data.
-4.  **Add the delivery handlers:** Create new handlers in the `delivery` layer to expose the new functionality through the API.
+### Running Tests
 
-By following these guidelines, you can ensure that the new features are well-integrated into the existing architecture and that the codebase remains clean and maintainable.
+To run all unit tests in the project, navigate to the project's root directory and execute the following command:
+
+```bash
+go test ./...
+```
+
+This command will discover and run all `_test.go` files within the current directory and its subdirectories.
+
+### Test Coverage
+
+Test coverage measures the percentage of your codebase that is executed by your tests. High test coverage indicates that a larger portion of your code is being tested, which can help in identifying untested areas and potential bugs.
+
+To generate a test coverage report, use the following commands:
+
+1.  **Generate coverage data:**
+    ```bash
+    go test -coverprofile=cover.out ./...
+    ```
+    This command runs the tests and writes coverage profiles to a file named `cover.out`.
+
+2.  **View coverage report in HTML:**
+    ```bash
+    go tool cover -html=cover.out
+    ```
+    This command opens an HTML report in your web browser, visually indicating which parts of your code are covered by tests and which are not.
